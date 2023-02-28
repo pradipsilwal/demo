@@ -1,10 +1,10 @@
 @description('The location into which your Azure resources should be deployed.')
 param location string = resourceGroup().location
 
-@description('Select the type of environment you want to provision. Allowed values are Production and Test.')
+@description('Select the type of environment you want to provision. Allowed values are prd and dev.')
 @allowed([
-  'Production'
-  'Test'
+  'prd'
+  'dev'
 ])
 param environmentType string
 
@@ -28,7 +28,7 @@ var storageAccountName = 'mystorage${resourceNameSuffix}'
 
 // Define the SKUs for each component based on the environment type.
 var environmentConfigurationMap = {
-  Production: {
+  prd: {
     appServicePlan: {
       sku: {
         name: 'S1'
@@ -41,7 +41,7 @@ var environmentConfigurationMap = {
       }
     }
   }
-  Test: {
+  dev: {
     appServicePlan: {
       sku: {
         name: 'F1'
@@ -114,4 +114,5 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   sku: environmentConfigurationMap[environmentType].storageAccount.sku
 }
 
+output appServiceAppName string = appServiceApp.name
 output appServiceAppHostName string = appServiceApp.properties.defaultHostName
