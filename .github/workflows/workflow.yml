@@ -45,7 +45,7 @@ jobs:
       - deploy-test
     with:
       environmentType: prd
-      resourceGroupName: ${{ vars.AZURE_RESOURCEGROUP_NAME }}
+      resourceGroupName: ${{ vars.AZURE_RESOURCEGROUP_NAME_PRD }}
       reviewApiUrl: https://api.contoso.com/reviews
       sqlServerAdministratorLogin: ToyCompanyAdmin
     secrets:
@@ -53,4 +53,4 @@ jobs:
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       reviewApiKey: ${{ secrets.REVIEW_API_KEY_PRODUCTION }}
-      sqlServerAdministratorLoginPassword: ${{ secrets.SQL_SERVER_ADMINISTRATOR_LOGIN_PASSWORD }}
+      sqlServerAdministratorLoginPassword: ${{ secrets.SQL_SERVER_ADMINISTRATOR_LOGIN_PASSWORD_PRD }}
