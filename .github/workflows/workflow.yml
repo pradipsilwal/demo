@@ -26,7 +26,7 @@ jobs:
     needs: [build, lint]
     with:
       environmentType: dev
-      resourceGroupName: ${{ vars.AZURE_RESOURCEGROUP_NAME }}
+      resourceGroupName: ${{ vars.AZURE_RESOURCEGROUP_NAME_DEV }}
       reviewApiUrl: https://sandbox.contoso.com/reviews
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID_DEV }}
